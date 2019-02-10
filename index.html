@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random Dog Image Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container">
+            <main>
+                <section class="selection-area">
+                    <h2>Random Dogs</h2>
+                    <form class="selection-form" action="https://dog.ceo/api/breed/hound/images/random" method="GET">
+                        <input type="submit" value="Click">
+                    </form>
+                </section>
+                <section class="results-area">
+                    <h2>Your Random Dog</h2>
+                    <div class="dog-pics"></div>
+                </section>
+            </main>
+        </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
