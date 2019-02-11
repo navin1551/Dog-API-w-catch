@@ -6,7 +6,6 @@
 function userSubmitHandle() {
     $('.selection-form').on('submit', function(event) {
         event.preventDefault();
-        $('.selection-area').hide();
         getDogImage();
     })
 }
@@ -14,7 +13,9 @@ function userSubmitHandle() {
 //Create function to request random dog image
 
 function getDogImage() {
-    fetch('https:\/\/images.dog.ceo\/breeds\/hound-afghan\/n02088094_4420.jpg')
+    $('.dog-pics').empty();
+    let dogBreed = $('#user-input').val();
+    fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random`)
         .then(response => response.json())
         .then(responseJson => displayDogImage(responseJson))
         .catch(error => alert('This breed not found!'));
@@ -22,10 +23,15 @@ function getDogImage() {
 }
 
 
-//Create a function to display the random dog image
+//Create a function to display the random dog image or show alert
 
 function displayDogImage(responseJson) {
-    $('.dog-pics').append(`<img src= "${responseJson}" class= ".dog-pics">`);
+    if(responseJson.message == "Breed not found") {
+        alert("This breed is not found");
+    }
+    else{
+    $('.dog-pics').append(`<img src= "${responseJson.message}" class= ".dog-pics">`);
+    }
 }
 
 
